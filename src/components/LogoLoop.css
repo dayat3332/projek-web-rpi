@@ -1,0 +1,64 @@
+.logoloop-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    transparent 100%
+  );
+}
+
+.logoloop-track {
+  display: flex;
+  width: max-content;
+  animation: logoloop-scroll var(--speed, 35s) linear infinite;
+  animation-direction: var(--direction, normal);
+}
+
+.logoloop-pause-hover:hover {
+  animation-play-state: paused;
+}
+
+.logoloop-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4rem;
+  padding-right: 4rem;
+  flex-shrink: 0;
+}
+
+.logoloop-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  opacity: 0.6;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  cursor: pointer;
+}
+
+.logoloop-item:hover {
+  opacity: 1;
+  color: #0f172a;
+  transform: scale(1.08);
+}
+
+@keyframes logoloop-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
