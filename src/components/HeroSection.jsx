@@ -1,5 +1,6 @@
 import YellowUnderline from './YellowUnderline'
 import RobotViewer from './RobotViewer'
+import MagicText from './ui/magic-text'
 
 export default function HeroSection() {
   return (
@@ -21,10 +22,14 @@ export default function HeroSection() {
               Tanpa Batas.
             </h1>
 
-            {/* Sub-headline */}
-            <p className="mt-6 text-base md:text-lg text-slate-500 leading-relaxed max-w-lg">
-              Unit Kegiatan Mahasiswa Robotika Politeknik Negeri Indramayu (RPI). Wadah kolaborasi mahasiswa untuk merancang, membangun, dan mengukir prestasi di dunia teknologi otomasi.
-            </p>
+            {/* Sub-headline with MagicText Scroll Animation */}
+            <div className="mt-6 max-w-lg">
+              <MagicText
+                text="Unit Kegiatan Mahasiswa Robotika Politeknik Negeri Indramayu (RPI). Wadah kolaborasi mahasiswa untuk merancang, membangun, dan mengukir prestasi di dunia teknologi otomasi."
+                className="text-base md:text-lg text-slate-700 leading-relaxed"
+                wordClassName="text-base md:text-lg font-normal text-slate-700"
+              />
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 mt-8">

@@ -1,32 +1,54 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronDown, Menu, X } from 'lucide-react'
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [divisionOpen, setDivisionOpen] = useState(false)
+  const [currentHash, setCurrentHash] = useState(() => window.location.hash || '#home')
+
+  useEffect(() => {
+    const handleHash = () => setCurrentHash(window.location.hash || '#home')
+    window.addEventListener('hashchange', handleHash)
+    return () => window.removeEventListener('hashchange', handleHash)
+  }, [])
 
   const divisions = [
-    { name: 'Divisi Kontes', desc: 'Fokus pada perlombaan KRI & kompetisi robotika nasional' },
-    { name: 'Divisi Riset', desc: 'Pengembangan teknologi otomasi, AI, & IoT terbaru' },
-    { name: 'Divisi Pengurus', desc: 'Manajemen organisasi, humas, & operasional UKM' }
+    { name: 'Divisi Kontes', slug: 'kontes', desc: 'Fokus pada perlombaan KRI & kompetisi robotika nasional' },
+    { name: 'Divisi Riset', slug: 'riset', desc: 'Pengembangan teknologi otomasi, AI, & IoT terbaru' },
+    { name: 'Divisi Pengurus', slug: 'pengurus', desc: 'Manajemen organisasi, humas, & operasional UKM' }
   ]
+
+  const isHome = currentHash === '#home' || currentHash === '' || currentHash === '#/'
+  const isAbout = currentHash === '#/about' || currentHash === '#about'
+  const isBlog = currentHash.startsWith('#/blog')
+  const isContact = currentHash === '#/contact'
+  const isAchievements = currentHash === '#/achievements'
 
   return (
     <nav className="sticky top-0 z-50 w-full px-6 md:px-12 lg:px-20 py-5 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-slate-100/80 transition-all duration-200 shadow-sm">
       {/* Logo (Left) */}
-      <a href="#home" id="nav-logo" className="text-2xl font-black text-slate-900 tracking-tight select-none">
+      <a href="#home" id="nav-logo" className="text-2xl font-black text-slate-900 tracking-tight select-none flex items-center gap-1.5">
+        <span className="w-3 h-3 rounded-full bg-blue-600 inline-block animate-pulse"></span>
         RPI.
       </a>
 
       {/* Desktop Links (Center) */}
       <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
         <li>
-          <a href="#home" id="nav-home" className="text-blue-600 hover:text-blue-700 transition-colors duration-200 font-semibold">
+          <a 
+            href="#home" 
+            id="nav-home" 
+            className={`transition-colors duration-200 ${isHome ? 'text-blue-600 font-bold' : 'text-slate-700 hover:text-blue-600'}`}
+          >
             Home
           </a>
         </li>
         <li>
-          <a href="#about" id="nav-about" className="text-slate-700 hover:text-blue-600 transition-colors duration-200">
+          <a 
+            href="#/about" 
+            id="nav-about" 
+            className={`transition-colors duration-200 ${isAbout ? 'text-blue-600 font-bold' : 'text-slate-700 hover:text-blue-600'}`}
+          >
             About
           </a>
         </li>
@@ -52,7 +74,8 @@ export default function Navbar() {
                 {divisions.map((div) => (
                   <a
                     key={div.name}
-                    href="#division"
+                    href={`#/division/${div.slug}`}
+                    onClick={() => setDivisionOpen(false)}
                     className="block p-3 rounded-lg hover:bg-blue-50 transition-colors duration-150 group"
                   >
                     <p className="text-sm font-semibold text-slate-800 group-hover:text-blue-600">
@@ -69,13 +92,30 @@ export default function Navbar() {
         </li>
 
         <li>
-          <a href="#achievements" id="nav-achievements" className="text-slate-700 hover:text-blue-600 transition-colors duration-200">
+          <a 
+            href="#/achievements" 
+            id="nav-achievements" 
+            className={`transition-colors duration-200 ${isAchievements ? 'text-blue-600 font-bold' : 'text-slate-700 hover:text-blue-600'}`}
+          >
             Achievements
           </a>
         </li>
         <li>
-          <a href="#about" id="nav-partners" className="text-slate-700 hover:text-blue-600 transition-colors duration-200">
-            Partners
+          <a 
+            href="#/blog" 
+            id="nav-blog" 
+            className={`transition-colors duration-200 ${isBlog ? 'text-blue-600 font-bold' : 'text-slate-700 hover:text-blue-600'}`}
+          >
+            Blog
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#/contact" 
+            id="nav-contact" 
+            className={`transition-colors duration-200 ${isContact ? 'text-blue-600 font-bold' : 'text-slate-700 hover:text-blue-600'}`}
+          >
+            Contact Us
           </a>
         </li>
       </ul>
@@ -83,7 +123,7 @@ export default function Navbar() {
       {/* Desktop Actions (Right) */}
       <div className="hidden md:flex items-center gap-4">
         <a
-          href="#about"
+          href="#/contact"
           id="nav-cta"
           className="text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/20"
         >
@@ -108,14 +148,14 @@ export default function Navbar() {
             <a
               href="#home"
               onClick={() => setMobileOpen(false)}
-              className="text-blue-600 font-semibold text-sm"
+              className={`text-sm ${isHome ? 'text-blue-600 font-bold' : 'text-slate-700 font-medium'}`}
             >
               Home
             </a>
             <a
-              href="#about"
+              href="#/about"
               onClick={() => setMobileOpen(false)}
-              className="text-slate-700 font-medium text-sm hover:text-blue-600"
+              className={`text-sm ${isAbout ? 'text-blue-600 font-bold' : 'text-slate-700 font-medium'}`}
             >
               About
             </a>
@@ -126,7 +166,7 @@ export default function Navbar() {
                 {divisions.map((div) => (
                   <a
                     key={div.name}
-                    href="#division"
+                    href={`#/division/${div.slug}`}
                     onClick={() => setMobileOpen(false)}
                     className="text-slate-600 text-sm hover:text-blue-600"
                   >
@@ -137,23 +177,30 @@ export default function Navbar() {
             </div>
 
             <a
-              href="#achievements"
+              href="#/achievements"
               onClick={() => setMobileOpen(false)}
-              className="text-slate-700 font-medium text-sm hover:text-blue-600"
+              className={`text-sm ${isAchievements ? 'text-blue-600 font-bold' : 'text-slate-700 font-medium hover:text-blue-600'}`}
             >
               Achievements
             </a>
             <a
-              href="#about"
+              href="#/blog"
               onClick={() => setMobileOpen(false)}
-              className="text-slate-700 font-medium text-sm hover:text-blue-600"
+              className={`text-sm ${isBlog ? 'text-blue-600 font-bold' : 'text-slate-700 font-medium hover:text-blue-600'}`}
             >
-              Partners
+              Blog
+            </a>
+            <a
+              href="#/contact"
+              onClick={() => setMobileOpen(false)}
+              className={`text-sm ${isContact ? 'text-blue-600 font-bold' : 'text-slate-700 font-medium hover:text-blue-600'}`}
+            >
+              Contact Us
             </a>
 
             <hr className="border-slate-100" />
             <a
-              href="#about"
+              href="#/contact"
               onClick={() => setMobileOpen(false)}
               className="text-sm font-semibold text-white bg-blue-600 px-5 py-2.5 rounded-lg text-center shadow-md"
             >

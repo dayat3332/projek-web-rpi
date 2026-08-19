@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import LogoLoop from './LogoLoop'
+import MagicText from './ui/magic-text'
 
 export default function AboutSection() {
   const partnerLogos = [
@@ -87,26 +88,37 @@ export default function AboutSection() {
         {/* Content: Two-column split */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           
-          {/* Left side: Huge bold text */}
+          {/* Left side: Huge bold text with MagicText Scroll Animation */}
           <div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.15] tracking-tight">
-              Membangun Masa Depan Teknologi.
-            </h2>
+            <MagicText
+              text="Membangun Masa Depan Teknologi."
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.15] tracking-tight"
+              wordClassName="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900"
+            />
           </div>
 
-          {/* Right side: Paragraph text & Learn More link */}
+          {/* Right side: Paragraph text with MagicText Scroll Animation & Learn More link */}
           <div className="flex flex-col justify-between h-full pt-2">
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Perkembangan robotika di Indonesia menunjukkan masa depan yang menjanjikan. Sebagai bentuk dukungan, Politeknik Negeri Indramayu (RPI) menyediakan wadah bagi mahasiswanya melalui UKM Robotika RPI untuk berinovasi dan berkompetisi di tingkat nasional.
-            </p>
+            <MagicText
+              text="Perkembangan robotika di Indonesia menunjukkan masa depan yang menjanjikan. Sebagai bentuk dukungan, Politeknik Negeri Indramayu (RPI) menyediakan wadah bagi mahasiswanya melalui UKM Robotika RPI untuk berinovasi dan berkompetisi di tingkat nasional."
+              className="text-base sm:text-lg text-slate-600 leading-relaxed"
+              wordClassName="text-base sm:text-lg font-normal text-slate-600"
+            />
 
-            <div className="mt-8">
+            <div className="mt-8 flex items-center gap-4 flex-wrap">
+              <a
+                href="#/about"
+                className="inline-flex items-center gap-2 font-bold text-white bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-xl transition-all duration-200 group text-sm shadow-md hover:shadow-blue-500/20"
+              >
+                <span>Linimasa & Visi Misi</span>
+                <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
               <a
                 href="#division"
-                className="inline-flex items-center gap-2 font-bold text-slate-900 hover:text-blue-600 transition-colors duration-200 group text-base"
+                className="inline-flex items-center gap-2 font-bold text-slate-700 hover:text-blue-600 px-4 py-2.5 rounded-xl transition-colors duration-200 group text-sm"
               >
-                <span>Learn More</span>
-                <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
+                <span>Divisi Robotika</span>
+                <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
               </a>
             </div>
           </div>

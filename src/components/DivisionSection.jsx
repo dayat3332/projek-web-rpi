@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import MagicText from './ui/magic-text'
 
 export default function DivisionSection() {
   return (
@@ -13,14 +14,18 @@ export default function DivisionSection() {
         {/* Header: Two-column split */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-end mb-12">
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight tracking-tight">
-              The core pillars of our technological development.
-            </h2>
+            <MagicText
+              text="The core pillars of our technological development."
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight tracking-tight"
+              wordClassName="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900"
+            />
           </div>
           <div>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Eksplorasi berbagai divisi teknis yang mendorong batas kemampuan dan inovasi mahasiswa di bidang robotika.
-            </p>
+            <MagicText
+              text="Eksplorasi berbagai divisi teknis yang mendorong batas kemampuan dan inovasi mahasiswa di bidang robotika."
+              className="text-base sm:text-lg text-slate-600 leading-relaxed"
+              wordClassName="text-base sm:text-lg font-normal text-slate-600"
+            />
           </div>
         </div>
 
@@ -28,7 +33,10 @@ export default function DivisionSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Large Card (Spanning 2 columns on the left) - Divisi KRSRI */}
-          <div className="lg:col-span-2 min-h-[380px] lg:min-h-[440px] rounded-3xl relative overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-end p-8 md:p-10 cursor-pointer">
+          <a
+            href="#/blog/computer-vision-object-detection"
+            className="lg:col-span-2 min-h-[380px] lg:min-h-[440px] rounded-3xl relative overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-end p-8 md:p-10 cursor-pointer block text-left"
+          >
             {/* Background Image with Zoom on Hover */}
             <img
               src="/division_krsri.jpg"
@@ -47,7 +55,7 @@ export default function DivisionSection() {
                 </h3>
                 
                 {/* Arrow Icon Button */}
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md text-white group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-105">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md text-white group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-110">
                   <ArrowUpRight size={22} />
                 </div>
               </div>
@@ -57,15 +65,21 @@ export default function DivisionSection() {
                 <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
                   Fokus riset robot berkaki otonom dan navigasi cerdas untuk misi penyelamatan (Search and Rescue). Mengintegrasikan sensor LiDAR, thermal imaging, algoritma inverse kinematics, dan computer vision untuk medan terjal.
                 </p>
+                <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 mt-2">
+                  Baca Artikel Riset KRSRI →
+                </span>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Right Column Stack (Two smaller cards) */}
           <div className="flex flex-col gap-6">
             
             {/* Card 1: Divisi TTG */}
-            <div className="min-h-[200px] lg:min-h-[208px] rounded-3xl relative overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-end p-7 cursor-pointer">
+            <a
+              href="#/blog/hardware-pcb-design-principles"
+              className="min-h-[200px] lg:min-h-[208px] rounded-3xl relative overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-end p-7 cursor-pointer block text-left"
+            >
               {/* Background Image with Zoom on Hover */}
               <img
                 src="/division_ttg.jpg"
@@ -84,7 +98,7 @@ export default function DivisionSection() {
                   </h3>
                   
                   {/* Arrow Icon Button */}
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white group-hover:bg-orange-500 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-105">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-110">
                     <ArrowUpRight size={18} />
                   </div>
                 </div>
@@ -94,12 +108,18 @@ export default function DivisionSection() {
                   <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
                     Inovasi alat otomatisasi dan Internet of Things (IoT) yang langsung memecahkan masalah industri pertanian, manufaktur, dan masyarakat lokal.
                   </p>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 mt-1">
+                    Baca Artikel Perancangan Hardware →
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
 
             {/* Card 2: Divisi VTOL */}
-            <div className="min-h-[200px] lg:min-h-[208px] rounded-3xl relative overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-end p-7 cursor-pointer">
+            <a
+              href="#/blog/state-machine-robot-control-architecture"
+              className="min-h-[200px] lg:min-h-[208px] rounded-3xl relative overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-end p-7 cursor-pointer block text-left"
+            >
               {/* Background Image with Zoom on Hover */}
               <img
                 src="/division_vtol.jpg"
@@ -118,7 +138,7 @@ export default function DivisionSection() {
                   </h3>
                   
                   {/* Arrow Icon Button */}
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-105">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-110">
                     <ArrowUpRight size={18} />
                   </div>
                 </div>
@@ -128,9 +148,12 @@ export default function DivisionSection() {
                   <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
                     Pengembangan wahana tanpa awak (UAV/Drone) dengan kapabilitas Vertical Take-Off and Landing untuk pemetaan udara dan logistik darurat.
                   </p>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 mt-1">
+                    Baca Artikel Sistem Robotika →
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
 
           </div>
 

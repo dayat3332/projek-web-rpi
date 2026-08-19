@@ -58,14 +58,14 @@ export default function Footer() {
               <div className="flex flex-col gap-2.5">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Navigasi</p>
                 <a href="#home" className="text-slate-600 hover:text-blue-600 transition-colors">Home</a>
-                <a href="#about" className="text-slate-600 hover:text-blue-600 transition-colors">About Us</a>
-                <a href="#division" className="text-slate-600 hover:text-blue-600 transition-colors">Technical Division</a>
+                <a href="#/about" className="text-slate-600 hover:text-blue-600 transition-colors">About Us</a>
+                <a href="#/blog" className="text-slate-600 hover:text-blue-600 transition-colors">Blog & Artikel</a>
               </div>
               <div className="flex flex-col gap-2.5">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Informasi</p>
-                <a href="#achievements" className="text-slate-600 hover:text-blue-600 transition-colors">Prestasi & Blog</a>
-                <a href="#about" className="text-slate-600 hover:text-blue-600 transition-colors">Partner Industri</a>
-                <a href="#home" className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-1">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Informasi & Kontak</p>
+                <a href="#achievements" className="text-slate-600 hover:text-blue-600 transition-colors">Prestasi</a>
+                <a href="#/contact" className="text-slate-600 hover:text-blue-600 transition-colors">Hubungi Kami</a>
+                <a href="#/contact" className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-1">
                   Gabung RPI <ArrowRight size={14} />
                 </a>
               </div>
